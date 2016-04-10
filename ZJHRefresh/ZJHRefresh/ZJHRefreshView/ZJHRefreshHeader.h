@@ -21,6 +21,8 @@ typedef void(^ZJHRefreshBlock)();
 + (instancetype)headerWithRefreshBlock:(ZJHRefreshBlock)block;
 
 + (instancetype)headerWithRefreshTarget:(id)target action:(SEL)action;
+// 控件额外的向上偏移量，控制自己的位置
+@property (nonatomic, assign) CGFloat moreInsetTopOffset;
 
 // 开始刷新
 - (void)beginRefresh;

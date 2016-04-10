@@ -95,28 +95,36 @@ const NSKeyValueObservingOptions ZJHObserveOptions = NSKeyValueObservingOptionNe
     [self removeListener];
     
     if (newSuperview) {
-        // 记录父控件以及edgeinset信息
+        // 记录父控件信息 布局自己的位置
         self.scrollView = (UIScrollView *)newSuperview;
         self.scrollViewOriginContentInset = self.scrollView.contentInset;
-        self.zjh_x = 0;
-        self.zjh_y = -self.zjh_height;
-        self.zjh_width = newSuperview.zjh_width;
+        
+        [self placeSelfPosition];
         
         [self setUpListener];
     }
 }
-
-#pragma mark - 布局位置
+- (void)setMoreInsetTopOffset:(CGFloat)moreInsetTopOffset{
+    _moreInsetTopOffset = moreInsetTopOffset;
+    
+    [self placeSelfPosition];
+}
+#pragma mark - 布局子控件位置
+- (void)placeSelfPosition{
+    self.zjh_x = 0;
+    self.zjh_y = -self.zjh_height-self.moreInsetTopOffset;
+    self.zjh_width = self.scrollView.zjh_width;
+}
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    [self placePosition];
+    [self placeSubviewsPosition];
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    [self placePosition];
+    [self placeSubviewsPosition];
 }
 // 设置子控件的位置
-- (void)placePosition{
+- (void)placeSubviewsPosition{
     
     [self.stateTitleLabel sizeToFit];
     CGFloat titleWidth = self.stateTitleLabel.zjh_width;
