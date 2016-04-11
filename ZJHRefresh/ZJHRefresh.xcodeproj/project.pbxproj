@@ -19,6 +19,7 @@
 		47A7B5551CBA4E2500153662 /* UIView+ZJHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5541CBA4E2500153662 /* UIView+ZJHExtension.m */; };
 		47A7B5581CBA4E4400153662 /* UIScrollView+ZJHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5571CBA4E4400153662 /* UIScrollView+ZJHExtension.m */; };
 		47A7B55A1CBA51E900153662 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A7B5591CBA51E900153662 /* arrow@2x.png */; };
+		47A7B55E1CBB433100153662 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B55D1CBB433100153662 /* MyTableViewController.m */; };
 		A414AA4D0B26B8C929F58E28 /* libPods-ZJHRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		47A7B5571CBA4E4400153662 /* UIScrollView+ZJHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ZJHExtension.m"; sourceTree = "<group>"; };
 		47A7B5591CBA51E900153662 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		47A7B55B1CBA565400153662 /* ZJHRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHRefresh.h; sourceTree = "<group>"; };
+		47A7B55C1CBB433100153662 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		47A7B55D1CBB433100153662 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
 		4BE0DD451FB4302A02416BE1 /* Pods-ZJHRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.release.xcconfig"; sourceTree = "<group>"; };
 		B030C09A9B6973E195E12C92 /* Pods-ZJHRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.debug.xcconfig"; sourceTree = "<group>"; };
 		EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,8 @@
 				47A7B5201CBA4D7300153662 /* AppDelegate.m */,
 				47A7B5221CBA4D7300153662 /* ViewController.h */,
 				47A7B5231CBA4D7300153662 /* ViewController.m */,
+				47A7B55C1CBB433100153662 /* MyTableViewController.h */,
+				47A7B55D1CBB433100153662 /* MyTableViewController.m */,
 				47A7B54F1CBA4DC800153662 /* ZJHRefreshView */,
 				47A7B51C1CBA4D7300153662 /* Supporting Files */,
 			);
@@ -378,6 +383,7 @@
 				47A7B5521CBA4DEF00153662 /* ZJHRefreshHeader.m in Sources */,
 				47A7B5581CBA4E4400153662 /* UIScrollView+ZJHExtension.m in Sources */,
 				47A7B5211CBA4D7300153662 /* AppDelegate.m in Sources */,
+				47A7B55E1CBB433100153662 /* MyTableViewController.m in Sources */,
 				47A7B51E1CBA4D7300153662 /* main.m in Sources */,
 				47A7B5551CBA4E2500153662 /* UIView+ZJHExtension.m in Sources */,
 			);

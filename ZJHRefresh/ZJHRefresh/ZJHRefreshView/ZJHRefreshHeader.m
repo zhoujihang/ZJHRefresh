@@ -87,12 +87,18 @@ const NSKeyValueObservingOptions ZJHObserveOptions = NSKeyValueObservingOptionNe
     
     self.refreshState = ZJHRefreshStateIdle;
 }
+// 加入到父控件或者从父控件中移除时会掉用此方法
 - (void)willMoveToSuperview:(UIView *)newSuperview{
     [super willMoveToSuperview:newSuperview];
     
-    if (![newSuperview isKindOfClass:[UIScrollView class]]) {return;}
+    // 从父控件移除时
+    if (!newSuperview) {
+        [self removeListener];
+        return;
+    }
     
-    [self removeListener];
+    // 不是scrollview时 直接退出
+    if (![newSuperview isKindOfClass:[UIScrollView class]]) {return;}
     
     if (newSuperview) {
         // 记录父控件信息 布局自己的位置
@@ -256,10 +262,8 @@ const NSKeyValueObservingOptions ZJHObserveOptions = NSKeyValueObservingOptionNe
     [self.scrollView addObserver:self forKeyPath:ZJHUIScrollViewContentOffsetKey options:ZJHObserveOptions context:nil];
 }
 - (void)removeListener{
-    [self.scrollView removeObserver:self forKeyPath:ZJHUIScrollViewContentOffsetKey];
-}
-- (void)dealloc{
-    [self removeListener];
+    // 此处只能使用 superview，不能使用scrollview
+    [self.superview removeObserver:self forKeyPath:ZJHUIScrollViewContentOffsetKey];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{

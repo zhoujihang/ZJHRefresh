@@ -36,7 +36,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIScrollView *backgroundScrollView = [[UIScrollView alloc] init];
-    backgroundScrollView.contentInset = UIEdgeInsetsMake(84, 0, 0, 0);
+    backgroundScrollView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0);
     backgroundScrollView.alwaysBounceVertical = YES;
     [self.view addSubview:backgroundScrollView];
     self.backgroundScrollView = backgroundScrollView;
@@ -49,7 +49,7 @@
             [weakSelf.backgroundScrollView.zjh_header endRefresh];
         });
     }];
-    header.moreInsetTopOffset = 20;
+    header.moreInsetTopOffset = 16;
     self.backgroundScrollView.zjh_header = header;
     
     UIView *topView = [[UIView alloc] init];
