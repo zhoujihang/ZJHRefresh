@@ -1,24 +1,21 @@
 //
-//  ViewController.m
+//  SimpleStatusRefreshViewController.m
 //  ZJHRefresh
 //
-//  Created by 周际航 on 16/4/10.
-//  Copyright © 2016年 zjh. All rights reserved.
+//  Created by 周际航 on 2017/8/1.
+//  Copyright © 2017年 zjh. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SimpleStatusRefreshViewController.h"
 #import "ZJHRefreshView.h"
 #import <Masonry/Masonry.h>
-#import "SimpleStatusRefreshViewController.h"
-#import "AnimatePercentRefreshViewController.h"
-
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface SimpleStatusRefreshViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong, nullable) UITableView *tableView;
 
 @end
 
-@implementation ViewController
+@implementation SimpleStatusRefreshViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,15 +25,21 @@
 }
 // 创建视图控件
 - (void)setUpViews{
+    self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     UITableView *tableView = [[UITableView alloc] init];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     tableView.contentOffset = CGPointMake(0, -64);
+    tableView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    self.tableView.zjh_header = [ZJHRefreshHeaderSimpleStatusView headerWithRefreshTarget:self action:@selector(startRefresh)];
+    self.tableView.zjh_header.isPercentAlpha = YES;
+    self.tableView.zjh_header.bottomMargin = 20;
 }
 
 // 设置控件约束关系
@@ -45,6 +48,7 @@
         make.edges.equalTo(self.view);
     }];
 }
+
 
 - (void)startRefresh {
     NSLog(@"开始刷新");
@@ -68,13 +72,7 @@
     // [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    NSString *text = [NSString stringWithFormat:@"%ld - %ld", indexPath.section, indexPath.row];
-    if (indexPath.row == 0) {
-        text = @"文本变化下拉刷新";
-    } else if (indexPath.row == 1) {
-        text = @"动画渐变下拉刷新";
-    }
-    cell.textLabel.text = text;
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld - %ld", indexPath.section, indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -90,25 +88,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.01;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        [self test0];
-    } else if (indexPath.row == 1) {
-        [self test1];
-    }
-}
-
-- (void)test0 {
-    UIViewController *vc = [[SimpleStatusRefreshViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)test1 {
-    UIViewController *vc = [[AnimatePercentRefreshViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 
 
 @end

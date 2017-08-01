@@ -15,11 +15,13 @@
 		47A7B52C1CBA4D7300153662 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A7B52A1CBA4D7300153662 /* LaunchScreen.storyboard */; };
 		47A7B5371CBA4D7300153662 /* ZJHRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5361CBA4D7300153662 /* ZJHRefreshTests.m */; };
 		47A7B5421CBA4D7300153662 /* ZJHRefreshUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5411CBA4D7300153662 /* ZJHRefreshUITests.m */; };
-		47A7B5521CBA4DEF00153662 /* ZJHRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5511CBA4DEF00153662 /* ZJHRefreshHeader.m */; };
-		47A7B5551CBA4E2500153662 /* UIView+ZJHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5541CBA4E2500153662 /* UIView+ZJHExtension.m */; };
-		47A7B5581CBA4E4400153662 /* UIScrollView+ZJHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5571CBA4E4400153662 /* UIScrollView+ZJHExtension.m */; };
-		47A7B55A1CBA51E900153662 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A7B5591CBA51E900153662 /* arrow@2x.png */; };
-		47A7B55E1CBB433100153662 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B55D1CBB433100153662 /* MyTableViewController.m */; };
+		47AE1FD51F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FD41F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.m */; };
+		47AE1FD81F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FD71F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.m */; };
+		47AE1FDB1F307F7E00B6E8A7 /* refresh_blackArrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1FDA1F307F7E00B6E8A7 /* refresh_blackArrow_down@2x.png */; };
+		47AE1FDE1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FDD1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.m */; };
+		47AE1FE01F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1FDF1F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png */; };
+		47AE1FE31F30942300B6E8A7 /* SimpleStatusRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FE21F30942300B6E8A7 /* SimpleStatusRefreshViewController.m */; };
+		47AE1FE61F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FE51F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m */; };
 		A414AA4D0B26B8C929F58E28 /* libPods-ZJHRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */; };
 /* End PBXBuildFile section */
 
@@ -57,16 +59,19 @@
 		47A7B53D1CBA4D7300153662 /* ZJHRefreshUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJHRefreshUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A7B5411CBA4D7300153662 /* ZJHRefreshUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJHRefreshUITests.m; sourceTree = "<group>"; };
 		47A7B5431CBA4D7300153662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		47A7B5501CBA4DEF00153662 /* ZJHRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHRefreshHeader.h; sourceTree = "<group>"; };
-		47A7B5511CBA4DEF00153662 /* ZJHRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHRefreshHeader.m; sourceTree = "<group>"; };
-		47A7B5531CBA4E2500153662 /* UIView+ZJHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJHExtension.h"; sourceTree = "<group>"; };
-		47A7B5541CBA4E2500153662 /* UIView+ZJHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJHExtension.m"; sourceTree = "<group>"; };
-		47A7B5561CBA4E4400153662 /* UIScrollView+ZJHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ZJHExtension.h"; sourceTree = "<group>"; };
-		47A7B5571CBA4E4400153662 /* UIScrollView+ZJHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ZJHExtension.m"; sourceTree = "<group>"; };
-		47A7B5591CBA51E900153662 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		47A7B55B1CBA565400153662 /* ZJHRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHRefresh.h; sourceTree = "<group>"; };
-		47A7B55C1CBB433100153662 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
-		47A7B55D1CBB433100153662 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		47AE1FD31F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHRefreshHeaderBaseView.h; sourceTree = "<group>"; };
+		47AE1FD41F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHRefreshHeaderBaseView.m; sourceTree = "<group>"; };
+		47AE1FD61F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHRefreshHeaderSimpleStatusView.h; sourceTree = "<group>"; };
+		47AE1FD71F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHRefreshHeaderSimpleStatusView.m; sourceTree = "<group>"; };
+		47AE1FD91F30749400B6E8A7 /* ZJHRefreshView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJHRefreshView.h; sourceTree = "<group>"; };
+		47AE1FDA1F307F7E00B6E8A7 /* refresh_blackArrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_blackArrow_down@2x.png"; sourceTree = "<group>"; };
+		47AE1FDC1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJHRefreshHeaderAnimatePercentView.h; sourceTree = "<group>"; };
+		47AE1FDD1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJHRefreshHeaderAnimatePercentView.m; sourceTree = "<group>"; };
+		47AE1FDF1F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_animate_percent_loading@2x.png"; sourceTree = "<group>"; };
+		47AE1FE11F30942300B6E8A7 /* SimpleStatusRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleStatusRefreshViewController.h; sourceTree = "<group>"; };
+		47AE1FE21F30942300B6E8A7 /* SimpleStatusRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleStatusRefreshViewController.m; sourceTree = "<group>"; };
+		47AE1FE41F30943A00B6E8A7 /* AnimatePercentRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatePercentRefreshViewController.h; sourceTree = "<group>"; };
+		47AE1FE51F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatePercentRefreshViewController.m; sourceTree = "<group>"; };
 		4BE0DD451FB4302A02416BE1 /* Pods-ZJHRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.release.xcconfig"; sourceTree = "<group>"; };
 		B030C09A9B6973E195E12C92 /* Pods-ZJHRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.debug.xcconfig"; sourceTree = "<group>"; };
 		EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,9 +141,11 @@
 				47A7B5201CBA4D7300153662 /* AppDelegate.m */,
 				47A7B5221CBA4D7300153662 /* ViewController.h */,
 				47A7B5231CBA4D7300153662 /* ViewController.m */,
-				47A7B55C1CBB433100153662 /* MyTableViewController.h */,
-				47A7B55D1CBB433100153662 /* MyTableViewController.m */,
-				47A7B54F1CBA4DC800153662 /* ZJHRefreshView */,
+				47AE1FE11F30942300B6E8A7 /* SimpleStatusRefreshViewController.h */,
+				47AE1FE21F30942300B6E8A7 /* SimpleStatusRefreshViewController.m */,
+				47AE1FE41F30943A00B6E8A7 /* AnimatePercentRefreshViewController.h */,
+				47AE1FE51F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m */,
+				47AE1FD21F30202600B6E8A7 /* RefreshHeaderView */,
 				47A7B51C1CBA4D7300153662 /* Supporting Files */,
 			);
 			path = ZJHRefresh;
@@ -174,19 +181,20 @@
 			path = ZJHRefreshUITests;
 			sourceTree = "<group>";
 		};
-		47A7B54F1CBA4DC800153662 /* ZJHRefreshView */ = {
+		47AE1FD21F30202600B6E8A7 /* RefreshHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				47A7B55B1CBA565400153662 /* ZJHRefresh.h */,
-				47A7B5501CBA4DEF00153662 /* ZJHRefreshHeader.h */,
-				47A7B5511CBA4DEF00153662 /* ZJHRefreshHeader.m */,
-				47A7B5531CBA4E2500153662 /* UIView+ZJHExtension.h */,
-				47A7B5541CBA4E2500153662 /* UIView+ZJHExtension.m */,
-				47A7B5561CBA4E4400153662 /* UIScrollView+ZJHExtension.h */,
-				47A7B5571CBA4E4400153662 /* UIScrollView+ZJHExtension.m */,
-				47A7B5591CBA51E900153662 /* arrow@2x.png */,
+				47AE1FDA1F307F7E00B6E8A7 /* refresh_blackArrow_down@2x.png */,
+				47AE1FDF1F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png */,
+				47AE1FD91F30749400B6E8A7 /* ZJHRefreshView.h */,
+				47AE1FD31F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.h */,
+				47AE1FD41F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.m */,
+				47AE1FD61F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.h */,
+				47AE1FD71F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.m */,
+				47AE1FDC1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.h */,
+				47AE1FDD1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.m */,
 			);
-			path = ZJHRefreshView;
+			path = RefreshHeaderView;
 			sourceTree = "<group>";
 		};
 		94BD91823045F6517BBD089B /* Frameworks */ = {
@@ -303,10 +311,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47A7B55A1CBA51E900153662 /* arrow@2x.png in Resources */,
+				47AE1FDB1F307F7E00B6E8A7 /* refresh_blackArrow_down@2x.png in Resources */,
 				47A7B52C1CBA4D7300153662 /* LaunchScreen.storyboard in Resources */,
 				47A7B5291CBA4D7300153662 /* Assets.xcassets in Resources */,
 				47A7B5271CBA4D7300153662 /* Main.storyboard in Resources */,
+				47AE1FE01F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,12 +389,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				47A7B5241CBA4D7300153662 /* ViewController.m in Sources */,
-				47A7B5521CBA4DEF00153662 /* ZJHRefreshHeader.m in Sources */,
-				47A7B5581CBA4E4400153662 /* UIScrollView+ZJHExtension.m in Sources */,
 				47A7B5211CBA4D7300153662 /* AppDelegate.m in Sources */,
-				47A7B55E1CBB433100153662 /* MyTableViewController.m in Sources */,
 				47A7B51E1CBA4D7300153662 /* main.m in Sources */,
-				47A7B5551CBA4E2500153662 /* UIView+ZJHExtension.m in Sources */,
+				47AE1FD81F30642600B6E8A7 /* ZJHRefreshHeaderSimpleStatusView.m in Sources */,
+				47AE1FDE1F3081C700B6E8A7 /* ZJHRefreshHeaderAnimatePercentView.m in Sources */,
+				47AE1FD51F30202600B6E8A7 /* ZJHRefreshHeaderBaseView.m in Sources */,
+				47AE1FE61F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m in Sources */,
+				47AE1FE31F30942300B6E8A7 /* SimpleStatusRefreshViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
