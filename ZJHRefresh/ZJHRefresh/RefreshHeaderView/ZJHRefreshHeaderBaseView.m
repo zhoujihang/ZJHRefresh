@@ -82,6 +82,7 @@ static const char ZJHRefreshHeaderBaseViewKey;
     __weak typeof (self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         self.scrollView.contentInset = self.originInset;
+        self.alpha = self.isPercentAlpha ? 0 : 1;
     } completion:^(BOOL finished) {
         [weakSelf updateNewRefreshStatus:ZJHRefreshHeaderViewStatusIdle];
         [self updateAlpha:0];
@@ -145,9 +146,6 @@ static const char ZJHRefreshHeaderBaseViewKey;
 }
 
 #pragma mark - 状态修改
-- (void)setNoMoreDataStatus {
-    [self updateNewRefreshStatus:ZJHRefreshHeaderViewStatusNoMore];
-}
 - (void)updateNewRefreshStatus:(ZJHRefreshHeaderViewStatus) newStatus {
     if (self.status == newStatus) {return;}
     
@@ -172,10 +170,6 @@ static const char ZJHRefreshHeaderBaseViewKey;
             if ([self.refreshTarget respondsToSelector:self.refreshAction]) {
                 objc_msgSend(self.refreshTarget,self.refreshAction);
             }
-        } break;
-        case ZJHRefreshHeaderViewStatusNoMore: {
-            self.status = ZJHRefreshHeaderViewStatusNoMore;
-            [self overload_updateViewNoMore];
         } break;
     }
     [self overload_updateSubviewFrame];
@@ -203,7 +197,6 @@ static const char ZJHRefreshHeaderBaseViewKey;
     if (![keyPath isEqualToString:@"contentOffset"]) {return;}
     if (self.scrollView == nil) {return;}
     if (self.status == ZJHRefreshHeaderViewStatusOnRefresh) {return;}
-    if (self.status == ZJHRefreshHeaderViewStatusNoMore) {return;}
     
     CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
     CGFloat offsetY = offset.y;
@@ -258,10 +251,6 @@ static const char ZJHRefreshHeaderBaseViewKey;
 }
 /** 更新视图 正在刷新状态 */
 - (void)overload_updateViewOnRefresh {
-    
-}
-/** 更新视图 无更多数据状态 */
-- (void)overload_updateViewNoMore {
     
 }
 

@@ -23,8 +23,7 @@
         NSDictionary *dic = @{
                               @(ZJHRefreshHeaderViewStatusIdle) : @"下拉可以刷新",
                               @(ZJHRefreshHeaderViewStatusLoosenRefresh) : @"立即刷新",
-                              @(ZJHRefreshHeaderViewStatusOnRefresh) : @"正在刷新",
-                              @(ZJHRefreshHeaderViewStatusNoMore) : @"无更多数据"
+                              @(ZJHRefreshHeaderViewStatusOnRefresh) : @"正在刷新"
                               };
         _titleMDic = [dic mutableCopy];
     }
@@ -45,7 +44,6 @@
     self.indicatorView.color = [UIColor grayColor];
     self.indicatorView.hidesWhenStopped = YES;
     [self.indicatorView stopAnimating];
-    self.arrowImgView.backgroundColor = [UIColor redColor];
     
     [self addSubview:self.arrowImgView];
     [self addSubview:self.titleLabel];
@@ -99,15 +97,6 @@
     self.titleLabel.hidden = YES;
     self.arrowImgView.hidden = YES;
 }
-
-- (void)overload_updateViewNoMore {
-    self.titleLabel.text = self.titleMDic[@(ZJHRefreshHeaderViewStatusOnRefresh)];
-    
-    [self.indicatorView startAnimating];
-    self.titleLabel.hidden = YES;
-    self.arrowImgView.hidden = YES;
-}
-
 
 
 

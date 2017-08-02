@@ -16,7 +16,6 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
     ZJHRefreshHeaderViewStatusIdle = 1,                 // 下拉刷新
     ZJHRefreshHeaderViewStatusLoosenRefresh = 2,        // 松开立即刷新
     ZJHRefreshHeaderViewStatusOnRefresh = 3,            // 正在刷新
-    ZJHRefreshHeaderViewStatusNoMore = 4,               // 没有更多数据
 };
 
 @interface UIScrollView (ZJHRefreshHeaderBaseView)
@@ -39,7 +38,6 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
 
 - (void)beginRefresh;
 - (void)endRefresh;
-
 #pragma mark - 子类可以重载的方法
 /** 返回视图高度 */
 - (CGFloat)overload_viewHeight;
@@ -55,7 +53,5 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
 - (void)overload_updateViewLoosenRefresh;
 /** 更新视图 正在刷新状态 */
 - (void)overload_updateViewOnRefresh;
-/** 更新视图 无更多数据状态 */
-- (void)overload_updateViewNoMore;
 
 @end

@@ -12,6 +12,8 @@
 @interface SimpleStatusRefreshViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong, nullable) UITableView *tableView;
+@property (nonatomic, assign) NSInteger refreshCount;
+
 
 @end
 
@@ -25,6 +27,8 @@
 }
 // 创建视图控件
 - (void)setUpViews{
+    self.refreshCount = 0;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     UITableView *tableView = [[UITableView alloc] init];
@@ -51,6 +55,7 @@
 
 
 - (void)startRefresh {
+    self.refreshCount++;
     NSLog(@"开始刷新");
     __weak typeof (self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
