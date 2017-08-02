@@ -168,7 +168,7 @@ static const char ZJHRefreshHeaderBaseViewKey;
                 self.refreshBlock(self);
             }
             if ([self.refreshTarget respondsToSelector:self.refreshAction]) {
-                objc_msgSend(self.refreshTarget,self.refreshAction);
+                objc_msgSend(self.refreshTarget,self.refreshAction,self);
             }
         } break;
     }
