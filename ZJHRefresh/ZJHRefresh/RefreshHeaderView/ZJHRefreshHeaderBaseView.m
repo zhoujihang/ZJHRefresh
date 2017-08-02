@@ -31,16 +31,16 @@ static const char ZJHRefreshHeaderBaseViewKey;
 
 @interface ZJHRefreshHeaderBaseView ()
 
-@property (nonatomic, weak, nullable, readwrite) UIScrollView *scrollView; // 父控件
-@property (nonatomic, assign) UIEdgeInsets originInset;         // scrollview原始contentInset
-
-@property (nonatomic, assign) CGFloat viewHeight;    // 视图高度
+@property (nonatomic, weak, nullable, readwrite) UIScrollView *scrollView;
+@property (nonatomic, assign) UIEdgeInsets originInset;
+@property (nonatomic, assign) CGFloat viewHeight;
 
 @property (nonatomic, assign, readwrite) ZJHRefreshHeaderViewStatus status;
+@property (nonatomic, assign) BOOL isOriginInsetIgnoreChange; // 为yes时，originInset不需要同步scrollView.contentInset的值
+
 @property (nonatomic, copy, nullable) ZJHRefreshHeaderViewRefreshingBlock refreshBlock;
 @property (nonatomic, weak) id refreshTarget;
 @property (nonatomic, assign) SEL refreshAction;
-
 @end
 
 @implementation ZJHRefreshHeaderBaseView
@@ -93,6 +93,7 @@ static const char ZJHRefreshHeaderBaseViewKey;
 - (void)setup {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.backgroundColor = [UIColor clearColor];
+    self.isOriginInsetIgnoreChange = NO;
     self.isPercentAlpha = NO;
     self.viewHeight = [self overload_viewHeight];
     [self sizeToFit];
@@ -148,31 +149,41 @@ static const char ZJHRefreshHeaderBaseViewKey;
 #pragma mark - 状态修改
 - (void)updateNewRefreshStatus:(ZJHRefreshHeaderViewStatus) newStatus {
     if (self.status == newStatus) {return;}
-    
     switch (newStatus) {
         case ZJHRefreshHeaderViewStatusIdle: {
-            self.status = ZJHRefreshHeaderViewStatusIdle;
-            [self overload_updateViewIdle];
+            [self updateRefreshStatusToIdle];
         } break;
         case ZJHRefreshHeaderViewStatusLoosenRefresh: {
-            self.status = ZJHRefreshHeaderViewStatusLoosenRefresh;
-            [self overload_updateViewLoosenRefresh];
+            [self updateRefreshStatusToLoosenRefresh];
         } break;
         case ZJHRefreshHeaderViewStatusOnRefresh: {
-            self.status = ZJHRefreshHeaderViewStatusOnRefresh;
-            [self overload_updateViewOnRefresh];
-            [UIView animateWithDuration:0.25 animations:^{
-                self.scrollView.contentInset = UIEdgeInsetsMake(ABS([self refreshingLimitOffsetY]), 0, 0, 0);
-            }];
-            if (self.refreshBlock) {
-                self.refreshBlock(self);
-            }
-            if ([self.refreshTarget respondsToSelector:self.refreshAction]) {
-                objc_msgSend(self.refreshTarget,self.refreshAction,self);
-            }
+            [self updateRefreshStatusToOnRefresh];
         } break;
     }
     [self overload_updateSubviewFrame];
+}
+- (void)updateRefreshStatusToIdle {
+    self.status = ZJHRefreshHeaderViewStatusIdle;
+    [self overload_updateViewIdle];
+}
+- (void)updateRefreshStatusToLoosenRefresh {
+    self.status = ZJHRefreshHeaderViewStatusLoosenRefresh;
+    [self overload_updateViewLoosenRefresh];
+}
+- (void)updateRefreshStatusToOnRefresh {
+    self.status = ZJHRefreshHeaderViewStatusOnRefresh;
+    [self overload_updateViewOnRefresh];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.isOriginInsetIgnoreChange = YES;
+        self.scrollView.contentInset = UIEdgeInsetsMake(ABS([self refreshingLimitOffsetY]), 0, 0, 0);
+        self.isOriginInsetIgnoreChange = NO;
+    }];
+    if (self.refreshBlock) {
+        self.refreshBlock(self);
+    }
+    if ([self.refreshTarget respondsToSelector:self.refreshAction]) {
+        objc_msgSend(self.refreshTarget,self.refreshAction,self);
+    }
 }
 - (void)updateAlpha:(CGFloat)percent {
     if (!self.isPercentAlpha) {return;}
@@ -187,24 +198,34 @@ static const char ZJHRefreshHeaderBaseViewKey;
 
 - (void)setupListener {
     [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.scrollView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)removeListener {
     [self.superview removeObserver:self forKeyPath:@"contentOffset"];
+    [self.superview removeObserver:self forKeyPath:@"contentInset"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    if (![keyPath isEqualToString:@"contentOffset"]) {return;}
     if (self.scrollView == nil) {return;}
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
+        [self scrollViewContentOffsetDidChange:offset];
+    } else if ([keyPath isEqualToString:@"contentInset"]) {
+        UIEdgeInsets inset = [change[NSKeyValueChangeNewKey] UIEdgeInsetsValue];
+        [self scrollViewContentInsetDidChange:inset];
+    }
+}
+- (void)scrollViewContentInsetDidChange:(UIEdgeInsets)inset {
+    if (self.isOriginInsetIgnoreChange) {return;}
+    self.originInset = inset;
+}
+- (void)scrollViewContentOffsetDidChange:(CGPoint)offset {
     if (self.status == ZJHRefreshHeaderViewStatusOnRefresh) {return;}
-    
-    CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
     CGFloat offsetY = offset.y;
     CGFloat refreshingLimitOffsetY = [self refreshingLimitOffsetY];
-    
     CGFloat pullLength = ABS(MIN(offsetY + self.originInset.top, 0)); // 下拉距离
     CGFloat pullPercent = pullLength / ABS(self.viewHeight + self.bottomMargin); // 下拉距离到视图顶部的百分比(触发立即刷新状态的百分比)
-    
     
     if (self.scrollView.isDragging) {
         if (offsetY >= refreshingLimitOffsetY) {
@@ -223,6 +244,9 @@ static const char ZJHRefreshHeaderBaseViewKey;
     [self updateAlpha:pullPercent];
     [self overload_scrollViewDidChangeOffset:offset pullPercent:pullPercent];
 }
+
+
+
 
 #pragma mark - 子类可以重载的方法
 /** 返回视图高度 */
