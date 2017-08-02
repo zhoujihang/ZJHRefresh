@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "SimpleStatusRefreshViewController.h"
 #import "AnimatePercentRefreshViewController.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -35,6 +36,8 @@
     tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     tableView.contentOffset = CGPointMake(0, -64);
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(startRefresh:)];
+    tableView.mj_header.backgroundColor = [UIColor redColor];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
@@ -46,12 +49,10 @@
     }];
 }
 
-- (void)startRefresh {
-    NSLog(@"开始刷新");
+- (void)startRefresh:(MJRefreshNormalHeader *)view {
     __weak typeof (self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"刷新完成");
-        [weakSelf.tableView.zjh_header endRefresh];
+        [weakSelf.tableView.mj_header endRefreshing];
     });
 }
 
@@ -73,6 +74,8 @@
         text = @"文本变化下拉刷新";
     } else if (indexPath.row == 1) {
         text = @"动画渐变下拉刷新";
+    } else if (indexPath.row == 2) {
+        text = @"修改contentInset.top=300";
     }
     cell.textLabel.text = text;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -96,6 +99,11 @@
         [self test0];
     } else if (indexPath.row == 1) {
         [self test1];
+    } else if (indexPath.row == 2) {
+        NSLog(@"修改前 top:%f", self.tableView.contentInset.top);
+        self.tableView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
+        NSLog(@"修改后 top:%f", self.tableView.contentInset.top);
+        self.tableView.contentOffset = CGPointMake(0, -300);
     }
 }
 

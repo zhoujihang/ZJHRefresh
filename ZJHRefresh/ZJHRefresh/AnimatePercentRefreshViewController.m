@@ -49,12 +49,9 @@
     }];
 }
 
-
 - (void)startRefresh {
-    NSLog(@"开始刷新");
     __weak typeof (self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"刷新完成");
         [weakSelf.tableView.zjh_header endRefresh];
     });
 }
@@ -72,7 +69,13 @@
     // [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     UITableViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld - %ld", indexPath.section, indexPath.row];
+    NSString *text = [NSString stringWithFormat:@"%ld - %ld", indexPath.section, indexPath.row];
+    if (indexPath.row == 0) {
+        text = @"立即刷新";
+    } else if (indexPath.row == 1) {
+        text = @"修改contentInset.top 为 300";
+    }
+    cell.textLabel.text = text;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -90,7 +93,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView.zjh_header beginRefresh];
+    if (indexPath.row == 0) {
+        [self.tableView.zjh_header beginRefresh];
+    } else if (indexPath.row == 1) {
+        self.tableView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
+        self.tableView.contentOffset = CGPointMake(0, -300);
+        NSLog(@"修改contentInset top：%f", self.tableView.contentInset.top);
+    } else {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor whiteColor];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end
