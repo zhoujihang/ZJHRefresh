@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31A5834A82AC43C7E66DD0B7 /* libPods-ZJHRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B80CAB737A7874FE0F50963 /* libPods-ZJHRefresh.a */; };
 		47A7B51E1CBA4D7300153662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B51D1CBA4D7300153662 /* main.m */; };
 		47A7B5211CBA4D7300153662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5201CBA4D7300153662 /* AppDelegate.m */; };
 		47A7B5241CBA4D7300153662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A7B5231CBA4D7300153662 /* ViewController.m */; };
@@ -22,7 +23,8 @@
 		47AE1FE01F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47AE1FDF1F30829A00B6E8A7 /* refresh_animate_percent_loading@2x.png */; };
 		47AE1FE31F30942300B6E8A7 /* SimpleStatusRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FE21F30942300B6E8A7 /* SimpleStatusRefreshViewController.m */; };
 		47AE1FE61F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AE1FE51F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m */; };
-		A414AA4D0B26B8C929F58E28 /* libPods-ZJHRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */; };
+		52D3F4919713E809594B2C14 /* libPods-ZJHRefreshUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2F537F73E7D7433816E00F /* libPods-ZJHRefreshUITests.a */; };
+		9E8456C689E5D46882927EB4 /* libPods-ZJHRefreshTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F22564A49C9A3058D31D545 /* libPods-ZJHRefreshTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,9 +74,15 @@
 		47AE1FE21F30942300B6E8A7 /* SimpleStatusRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleStatusRefreshViewController.m; sourceTree = "<group>"; };
 		47AE1FE41F30943A00B6E8A7 /* AnimatePercentRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatePercentRefreshViewController.h; sourceTree = "<group>"; };
 		47AE1FE51F30943A00B6E8A7 /* AnimatePercentRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatePercentRefreshViewController.m; sourceTree = "<group>"; };
-		4BE0DD451FB4302A02416BE1 /* Pods-ZJHRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.release.xcconfig"; sourceTree = "<group>"; };
-		B030C09A9B6973E195E12C92 /* Pods-ZJHRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.debug.xcconfig"; sourceTree = "<group>"; };
-		EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B80CAB737A7874FE0F50963 /* libPods-ZJHRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F22564A49C9A3058D31D545 /* libPods-ZJHRefreshTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefreshTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE2E59512B559D170E22046 /* Pods-ZJHRefreshTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefreshTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefreshTests/Pods-ZJHRefreshTests.release.xcconfig"; sourceTree = "<group>"; };
+		AC2F537F73E7D7433816E00F /* libPods-ZJHRefreshUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZJHRefreshUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4AE55FFAE0C547CCADB13E3 /* Pods-ZJHRefreshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefreshTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefreshTests/Pods-ZJHRefreshTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D74F99A3C8B2DD197AA669DE /* Pods-ZJHRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.debug.xcconfig"; sourceTree = "<group>"; };
+		F9C4253383012754E5AF672F /* Pods-ZJHRefreshUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefreshUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefreshUITests/Pods-ZJHRefreshUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FEB887C71F74DB1BA143879D /* Pods-ZJHRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh.release.xcconfig"; sourceTree = "<group>"; };
+		FED9544D16B0E97E88F9CC1D /* Pods-ZJHRefreshUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZJHRefreshUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZJHRefreshUITests/Pods-ZJHRefreshUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A414AA4D0B26B8C929F58E28 /* libPods-ZJHRefresh.a in Frameworks */,
+				31A5834A82AC43C7E66DD0B7 /* libPods-ZJHRefresh.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E8456C689E5D46882927EB4 /* libPods-ZJHRefreshTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,19 +106,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D3F4919713E809594B2C14 /* libPods-ZJHRefreshUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B3CEEECA28AFA51C755A352 /* Pods */ = {
+		40627AFFBF64140CF251FBCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B030C09A9B6973E195E12C92 /* Pods-ZJHRefresh.debug.xcconfig */,
-				4BE0DD451FB4302A02416BE1 /* Pods-ZJHRefresh.release.xcconfig */,
+				6B80CAB737A7874FE0F50963 /* libPods-ZJHRefresh.a */,
+				8F22564A49C9A3058D31D545 /* libPods-ZJHRefreshTests.a */,
+				AC2F537F73E7D7433816E00F /* libPods-ZJHRefreshUITests.a */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		47A7B5101CBA4D7300153662 = {
@@ -119,8 +130,8 @@
 				47A7B5351CBA4D7300153662 /* ZJHRefreshTests */,
 				47A7B5401CBA4D7300153662 /* ZJHRefreshUITests */,
 				47A7B51A1CBA4D7300153662 /* Products */,
-				1B3CEEECA28AFA51C755A352 /* Pods */,
-				94BD91823045F6517BBD089B /* Frameworks */,
+				D43BE71E7074C6D40C0451DF /* Pods */,
+				40627AFFBF64140CF251FBCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,12 +208,17 @@
 			path = RefreshHeaderView;
 			sourceTree = "<group>";
 		};
-		94BD91823045F6517BBD089B /* Frameworks */ = {
+		D43BE71E7074C6D40C0451DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EE540A4C108CECEB40C0655E /* libPods-ZJHRefresh.a */,
+				D74F99A3C8B2DD197AA669DE /* Pods-ZJHRefresh.debug.xcconfig */,
+				FEB887C71F74DB1BA143879D /* Pods-ZJHRefresh.release.xcconfig */,
+				C4AE55FFAE0C547CCADB13E3 /* Pods-ZJHRefreshTests.debug.xcconfig */,
+				AAE2E59512B559D170E22046 /* Pods-ZJHRefreshTests.release.xcconfig */,
+				FED9544D16B0E97E88F9CC1D /* Pods-ZJHRefreshUITests.debug.xcconfig */,
+				F9C4253383012754E5AF672F /* Pods-ZJHRefreshUITests.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,12 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A7B5461CBA4D7300153662 /* Build configuration list for PBXNativeTarget "ZJHRefresh" */;
 			buildPhases = (
-				B263E1E778F345EE463BC953 /* Check Pods Manifest.lock */,
+				989C76F05F8F79BF0987B29B /* [CP] Check Pods Manifest.lock */,
 				47A7B5151CBA4D7300153662 /* Sources */,
 				47A7B5161CBA4D7300153662 /* Frameworks */,
 				47A7B5171CBA4D7300153662 /* Resources */,
-				74EEB012F560647E2BF9A672 /* Embed Pods Frameworks */,
-				9D33DF00750404DF11C57860 /* Copy Pods Resources */,
+				B9E6D545A74299C11FD77C82 /* [CP] Embed Pods Frameworks */,
+				C6C6C755E16766AE2E6A578D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A7B5491CBA4D7300153662 /* Build configuration list for PBXNativeTarget "ZJHRefreshTests" */;
 			buildPhases = (
+				E0A3E87B654BD9ADF144C87B /* [CP] Check Pods Manifest.lock */,
 				47A7B52E1CBA4D7300153662 /* Sources */,
 				47A7B52F1CBA4D7300153662 /* Frameworks */,
 				47A7B5301CBA4D7300153662 /* Resources */,
+				9CE2B772EFEE97F78FD62FB7 /* [CP] Embed Pods Frameworks */,
+				1CACF8D4ED122C83E51CD390 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,9 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47A7B54C1CBA4D7300153662 /* Build configuration list for PBXNativeTarget "ZJHRefreshUITests" */;
 			buildPhases = (
+				572C7F2E4680D7D58B63CDA6 /* [CP] Check Pods Manifest.lock */,
 				47A7B5391CBA4D7300153662 /* Sources */,
 				47A7B53A1CBA4D7300153662 /* Frameworks */,
 				47A7B53B1CBA4D7300153662 /* Resources */,
+				44D9B593675AD9CEED654911 /* [CP] Embed Pods Frameworks */,
+				F0EE12F3A8A8D274EDC98953 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,14 +358,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		74EEB012F560647E2BF9A672 /* Embed Pods Frameworks */ = {
+		1CACF8D4ED122C83E51CD390 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefreshTests/Pods-ZJHRefreshTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44D9B593675AD9CEED654911 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefreshUITests/Pods-ZJHRefreshUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		572C7F2E4680D7D58B63CDA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		989C76F05F8F79BF0987B29B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9CE2B772EFEE97F78FD62FB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefreshTests/Pods-ZJHRefreshTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E6D545A74299C11FD77C82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,14 +448,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D33DF00750404DF11C57860 /* Copy Pods Resources */ = {
+		C6C6C755E16766AE2E6A578D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,19 +463,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefresh/Pods-ZJHRefresh-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B263E1E778F345EE463BC953 /* Check Pods Manifest.lock */ = {
+		E0A3E87B654BD9ADF144C87B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0EE12F3A8A8D274EDC98953 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZJHRefreshUITests/Pods-ZJHRefreshUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -534,7 +646,7 @@
 		};
 		47A7B5471CBA4D7300153662 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B030C09A9B6973E195E12C92 /* Pods-ZJHRefresh.debug.xcconfig */;
+			baseConfigurationReference = D74F99A3C8B2DD197AA669DE /* Pods-ZJHRefresh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -548,7 +660,7 @@
 		};
 		47A7B5481CBA4D7300153662 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BE0DD451FB4302A02416BE1 /* Pods-ZJHRefresh.release.xcconfig */;
+			baseConfigurationReference = FEB887C71F74DB1BA143879D /* Pods-ZJHRefresh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -562,6 +674,7 @@
 		};
 		47A7B54A1CBA4D7300153662 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4AE55FFAE0C547CCADB13E3 /* Pods-ZJHRefreshTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ZJHRefreshTests/Info.plist;
@@ -574,6 +687,7 @@
 		};
 		47A7B54B1CBA4D7300153662 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAE2E59512B559D170E22046 /* Pods-ZJHRefreshTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ZJHRefreshTests/Info.plist;
@@ -586,6 +700,7 @@
 		};
 		47A7B54D1CBA4D7300153662 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FED9544D16B0E97E88F9CC1D /* Pods-ZJHRefreshUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ZJHRefreshUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -597,6 +712,7 @@
 		};
 		47A7B54E1CBA4D7300153662 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9C4253383012754E5AF672F /* Pods-ZJHRefreshUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ZJHRefreshUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
