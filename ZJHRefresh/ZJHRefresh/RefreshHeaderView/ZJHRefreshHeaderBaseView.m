@@ -33,6 +33,7 @@ static const char ZJHRefreshHeaderBaseViewKey;
 
 @property (nonatomic, weak, nullable, readwrite) UIScrollView *scrollView;
 @property (nonatomic, assign) UIEdgeInsets originInset;
+@property (nonatomic, assign) UIEdgeInsets originAdjustedContentInset;
 @property (nonatomic, assign) CGFloat viewHeight;
 
 @property (nonatomic, assign, readwrite) ZJHRefreshHeaderViewStatus status;
@@ -69,26 +70,44 @@ static const char ZJHRefreshHeaderBaseViewKey;
 }
 
 - (void)beginRefresh {
+    if (self.isNoMoreData) {return;}
     __weak typeof (self) weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
         self.scrollView.contentOffset = CGPointMake(0, [self refreshingLimitOffsetY]);
     } completion:^(BOOL finished) {
+        if (weakSelf.isNoMoreData) {return;}
         [weakSelf updateNewRefreshStatus:ZJHRefreshHeaderViewStatusOnRefresh];
         [self updateAlpha:1];
     }];
 }
 
 - (void)endRefresh {
+    if (self.isNoMoreData) {return;}
     __weak typeof (self) weakSelf = self;
+    CGFloat alpha = self.isPercentAlpha ? 0 : 1;
     [UIView animateWithDuration:0.25 animations:^{
         self.scrollView.contentInset = self.originInset;
-        self.alpha = self.isPercentAlpha ? 0 : 1;
+        self.alpha = alpha;
     } completion:^(BOOL finished) {
+        if (weakSelf.isNoMoreData) {return;}
         [weakSelf updateNewRefreshStatus:ZJHRefreshHeaderViewStatusIdle];
-        [self updateAlpha:0];
+        [self updateAlpha:alpha];
     }];
 }
-
+- (void)setIsNoMoreData:(BOOL)isNoMoreData {
+    _isNoMoreData = isNoMoreData;
+    CGFloat alpha = self.isPercentAlpha ? 0 : 1;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.scrollView.contentInset = self.originInset;
+        [self updateAlpha:alpha];
+        if (self.isNoMoreData) {
+            [self updateNewRefreshStatus:ZJHRefreshHeaderViewStatusNoMoreData];
+        } else {
+            [self updateNewRefreshStatus:ZJHRefreshHeaderViewStatusIdle];
+        }
+    } completion:^(BOOL finished) {
+    }];
+}
 #pragma mark - 初始化控件和数据
 - (void)setup {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -113,6 +132,10 @@ static const char ZJHRefreshHeaderBaseViewKey;
     UIScrollView *superScrollView = (UIScrollView *)newSuperview;
     self.scrollView = superScrollView;
     self.originInset = superScrollView.contentInset;
+    self.originAdjustedContentInset = superScrollView.contentInset;
+    if (@available(iOS 11.0, *)) {
+        self.originAdjustedContentInset = superScrollView.adjustedContentInset;
+    }
     
     [self setupViewFrame];
     [self setupListener];
@@ -134,7 +157,7 @@ static const char ZJHRefreshHeaderBaseViewKey;
 
 // 刷新临界点
 - (CGFloat)refreshingLimitOffsetY {
-    return -(self.originInset.top + self.viewHeight + self.bottomMargin);
+    return -(self.originAdjustedContentInset.top + self.viewHeight + self.bottomMargin);
 }
 
 #pragma mark - 内容宽高
@@ -159,6 +182,9 @@ static const char ZJHRefreshHeaderBaseViewKey;
         case ZJHRefreshHeaderViewStatusOnRefresh: {
             [self updateRefreshStatusToOnRefresh];
         } break;
+        case ZJHRefreshHeaderViewStatusNoMoreData: {
+            [self updateRefreshStatusToNoMoreData];
+        } break;
     }
     [self overload_updateSubviewFrame];
 }
@@ -175,15 +201,20 @@ static const char ZJHRefreshHeaderBaseViewKey;
     [self overload_updateViewOnRefresh];
     [UIView animateWithDuration:0.25 animations:^{
         self.isOriginInsetIgnoreChange = YES;
-        self.scrollView.contentInset = UIEdgeInsetsMake(ABS([self refreshingLimitOffsetY]), 0, 0, 0);
+        CGFloat newContentInsetTop = self.originInset.top + self.viewHeight + self.bottomMargin;
+        self.scrollView.contentInset = UIEdgeInsetsMake(newContentInsetTop, 0, 0, 0);
         self.isOriginInsetIgnoreChange = NO;
     }];
     if (self.refreshBlock) {
         self.refreshBlock(self);
     }
     if ([self.refreshTarget respondsToSelector:self.refreshAction]) {
-        objc_msgSend(self.refreshTarget,self.refreshAction,self);
+        objc_msgSend(self.refreshTarget, self.refreshAction, self);
     }
+}
+- (void)updateRefreshStatusToNoMoreData {
+    self.status = ZJHRefreshHeaderViewStatusNoMoreData;
+    [self overload_updateViewNoMoreData];
 }
 - (void)updateAlpha:(CGFloat)percent {
     if (!self.isPercentAlpha) {return;}
@@ -197,13 +228,17 @@ static const char ZJHRefreshHeaderBaseViewKey;
 }
 
 - (void)setupListener {
+    [self removeListener];
     [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.scrollView addObserver:self forKeyPath:@"contentInset" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.scrollView addObserver:self forKeyPath:@"safeAreaInsets" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    
 }
 
 - (void)removeListener {
     [self.superview removeObserver:self forKeyPath:@"contentOffset"];
     [self.superview removeObserver:self forKeyPath:@"contentInset"];
+    [self.superview removeObserver:self forKeyPath:@"safeAreaInsets"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -212,21 +247,29 @@ static const char ZJHRefreshHeaderBaseViewKey;
         CGPoint offset = [change[NSKeyValueChangeNewKey] CGPointValue];
         [self scrollViewContentOffsetDidChange:offset];
     } else if ([keyPath isEqualToString:@"contentInset"]) {
-        UIEdgeInsets inset = [change[NSKeyValueChangeNewKey] UIEdgeInsetsValue];
-        [self scrollViewContentInsetDidChange:inset];
+        [self scrollViewContentInsetDidChange];
+    } else if ([keyPath isEqualToString:@"safeAreaInsets"]) {
+        [self scrollViewContentInsetDidChange];
     }
 }
-- (void)scrollViewContentInsetDidChange:(UIEdgeInsets)inset {
+- (void)scrollViewContentInsetDidChange {
     if (self.isOriginInsetIgnoreChange) {return;}
-    self.originInset = inset;
+    self.originInset = self.scrollView.contentInset;
+    self.originAdjustedContentInset = self.scrollView.contentInset;
+    if (@available(iOS 11.0, *)) {
+        self.originAdjustedContentInset = self.scrollView.adjustedContentInset;
+    }
 }
 - (void)scrollViewContentOffsetDidChange:(CGPoint)offset {
     if (self.status == ZJHRefreshHeaderViewStatusOnRefresh) {return;}
     CGFloat offsetY = offset.y;
     CGFloat refreshingLimitOffsetY = [self refreshingLimitOffsetY];
-    CGFloat pullLength = ABS(MIN(offsetY + self.originInset.top, 0)); // 下拉距离
+    CGFloat insetTop = self.originAdjustedContentInset.top;
+    CGFloat pullLength = ABS(MIN(offsetY + insetTop, 0)); // 下拉距离
     CGFloat pullPercent = pullLength / ABS(self.viewHeight + self.bottomMargin); // 下拉距离到视图顶部的百分比(触发立即刷新状态的百分比)
     
+    [self updateAlpha:pullPercent];
+    if (self.isNoMoreData == YES) {return;}
     if (self.scrollView.isDragging) {
         if (offsetY >= refreshingLimitOffsetY) {
             // 进入下拉可刷新状态
@@ -241,12 +284,8 @@ static const char ZJHRefreshHeaderBaseViewKey;
             [self updateNewRefreshStatus:ZJHRefreshHeaderViewStatusOnRefresh];
         }
     }
-    [self updateAlpha:pullPercent];
     [self overload_scrollViewDidChangeOffset:offset pullPercent:pullPercent];
 }
-
-
-
 
 #pragma mark - 子类可以重载的方法
 /** 返回视图高度 */
@@ -275,6 +314,10 @@ static const char ZJHRefreshHeaderBaseViewKey;
 }
 /** 更新视图 正在刷新状态 */
 - (void)overload_updateViewOnRefresh {
+    
+}
+/** 更新视图 设置了当前无更多数据 */
+- (void)overload_updateViewNoMoreData {
     
 }
 

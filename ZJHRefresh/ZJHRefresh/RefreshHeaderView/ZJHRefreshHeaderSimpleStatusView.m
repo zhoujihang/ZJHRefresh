@@ -13,7 +13,8 @@
 @property (nonatomic, strong, nullable) UIImageView *arrowImgView;
 @property (nonatomic, strong, nullable) UILabel *titleLabel;
 @property (nonatomic, strong, nullable) UIActivityIndicatorView *indicatorView;
-
+@property (nonatomic, strong, nullable) UIView *contentView;
+@property (nonatomic, strong, nullable) UILabel *noMoreDataLabel;
 @end
 
 @implementation ZJHRefreshHeaderSimpleStatusView
@@ -35,7 +36,6 @@
 }
 
 - (void)overload_setupView {
-    self.backgroundColor = [UIColor cyanColor];
     self.arrowImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"refresh_blackArrow_down"]];
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -45,9 +45,21 @@
     self.indicatorView.hidesWhenStopped = YES;
     [self.indicatorView stopAnimating];
     
-    [self addSubview:self.arrowImgView];
-    [self addSubview:self.titleLabel];
-    [self addSubview:self.indicatorView];
+    self.contentView = [[UIView alloc] init];
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    
+    self.noMoreDataLabel = [[UILabel alloc] init];
+    self.noMoreDataLabel.font = [UIFont systemFontOfSize:12];
+    self.noMoreDataLabel.textColor = [UIColor blackColor];
+    self.noMoreDataLabel.textAlignment = NSTextAlignmentCenter;
+    self.noMoreDataLabel.text = @"已无更多消息";
+    self.noMoreDataLabel.hidden = YES;
+    
+    [self.contentView addSubview:self.arrowImgView];
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.indicatorView];
+    [self addSubview:self.contentView];
+    [self addSubview:self.noMoreDataLabel];
 }
 
 - (void)overload_updateSubviewFrame {
@@ -63,9 +75,15 @@
     self.arrowImgView.frame = CGRectMake(arrowImgViewX, arrowImgViewY, 15, 40);
     self.titleLabel.frame = CGRectMake(titleX, titleY, ceilf(textSize.width), ceilf(textSize.height));
     self.indicatorView.center = CGPointMake(ceilf(size.width * 0.5), ceilf(size.height*0.5));
+    
+    self.contentView.frame = CGRectMake(0, 0, size.width, size.height);
+    self.noMoreDataLabel.frame = CGRectMake(0, 0, size.width, size.height);
 }
 
 - (void)overload_updateViewIdle {
+    self.contentView.hidden = NO;
+    self.noMoreDataLabel.hidden = YES;
+    
     self.titleLabel.text = self.titleMDic[@(ZJHRefreshHeaderViewStatusIdle)];
     [UIView animateWithDuration:0.25 animations:^{
         self.arrowImgView.transform = CGAffineTransformMakeRotation(0);
@@ -77,6 +95,9 @@
 }
 
 - (void)overload_updateViewLoosenRefresh {
+    self.contentView.hidden = NO;
+    self.noMoreDataLabel.hidden = YES;
+    
     self.titleLabel.text = self.titleMDic[@(ZJHRefreshHeaderViewStatusLoosenRefresh)];
     [UIView animateWithDuration:0.25 animations:^{
         self.arrowImgView.transform = CGAffineTransformMakeRotation(-M_PI*2*179/360.0);
@@ -88,6 +109,9 @@
 }
 
 - (void)overload_updateViewOnRefresh {
+    self.contentView.hidden = NO;
+    self.noMoreDataLabel.hidden = YES;
+    
     self.titleLabel.text = self.titleMDic[@(ZJHRefreshHeaderViewStatusOnRefresh)];
     [UIView animateWithDuration:0.25 animations:^{
         self.arrowImgView.transform = CGAffineTransformMakeRotation(0);
@@ -98,6 +122,10 @@
     self.arrowImgView.hidden = YES;
 }
 
-
+- (void)overload_updateViewNoMoreData {
+    self.contentView.hidden = YES;
+    self.noMoreDataLabel.hidden = NO;
+    
+}
 
 @end

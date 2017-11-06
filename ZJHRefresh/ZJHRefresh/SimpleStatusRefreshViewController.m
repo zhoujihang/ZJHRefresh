@@ -26,12 +26,9 @@
 // 创建视图控件
 - (void)setUpViews{
     self.view.backgroundColor = [UIColor whiteColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     UITableView *tableView = [[UITableView alloc] init];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    tableView.contentOffset = CGPointMake(0, -64);
     tableView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.view addSubview:tableView];

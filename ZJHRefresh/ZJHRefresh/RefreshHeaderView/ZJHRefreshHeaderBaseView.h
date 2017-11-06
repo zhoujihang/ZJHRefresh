@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
     ZJHRefreshHeaderViewStatusIdle = 1,                 // 下拉刷新
     ZJHRefreshHeaderViewStatusLoosenRefresh = 2,        // 松开立即刷新
     ZJHRefreshHeaderViewStatusOnRefresh = 3,            // 正在刷新
+    ZJHRefreshHeaderViewStatusNoMoreData = 4,           // 无更多数据
 };
 
 @interface UIScrollView (ZJHRefreshHeaderBaseView)
@@ -32,6 +33,7 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
 @property (nonatomic, assign) BOOL isPercentAlpha;   // 根据百分比修改透明度
 
 @property (nonatomic, assign, readonly) ZJHRefreshHeaderViewStatus status;
+@property (nonatomic, assign) BOOL isNoMoreData;     // 是否无更多数据
 
 + (instancetype _Nonnull )headerWithRefreshBlock:(ZJHRefreshHeaderViewRefreshingBlock _Nonnull )block;
 + (instancetype _Nonnull )headerWithRefreshTarget:(id _Nonnull )target action:(SEL _Nonnull )action;
@@ -53,5 +55,7 @@ typedef NS_ENUM(NSUInteger, ZJHRefreshHeaderViewStatus) {
 - (void)overload_updateViewLoosenRefresh;
 /** 更新视图 正在刷新状态 */
 - (void)overload_updateViewOnRefresh;
+/** 更新视图 设置了当前无更多数据 */
+- (void)overload_updateViewNoMoreData;
 
 @end
